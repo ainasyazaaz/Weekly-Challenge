@@ -3,20 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weekly Student Challenge</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <title>The Capybara Challenge 🌿🦦</title>
+    <!-- GENTLE AESTHETIC FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500&family=Quicksand:wght@300;400&display=swap" rel="stylesheet">
     <style>
+        /* 🌿 CAPYBARA THEME PALETTE */
         :root {
-            --bg-color: #fcfaf8;
+            --bg-color: #f2e9e1;     /* Softest Beige (Like sand) */
             --card-bg: #ffffff;
-            --accent-soft: #e5e1da;
-            --text-main: #4a4a4a;
-            --text-muted: #8c8c8c;
+            --accent-green: #e5f0e8;   /* Matcha/Jungle Pale Green */
+            --accent-capy: #c7b299;    /* Gentle Brown (Capy Fur) */
+            --text-main: #5d5c56;      /* Relaxed Dark Olive */
+            --text-muted: #9c9a92;
+            --button-main: #739e80;    /* Muted Jungle Leaf Green */
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Quicksand', sans-serif;
             background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(var(--accent-green) 1.5px, transparent 1.5px),
+                radial-gradient(var(--accent-green) 1.5px, transparent 1.5px);
+            background-size: 60px 60px;
+            background-position: 0 0, 30px 30px; /* Subtle polka dots */
             color: var(--text-main);
             margin: 0;
             display: flex;
@@ -27,86 +36,120 @@
 
         .container {
             width: 90%;
-            max-width: 500px;
+            max-width: 450px;
             background: var(--card-bg);
             padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border-radius: 25px; /* Softer edges */
+            box-shadow: 0 15px 40px rgba(0,0,0,0.04);
             text-align: center;
-            border: 1px solid var(--accent-soft);
+            border: 2px solid var(--accent-green);
+        }
+
+        .header-section {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        /* The Capybara Graphic */
+        .capy-icon {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 15px;
         }
 
         h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            font-weight: 400;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 500;
+            font-size: 2rem;
+            color: var(--button-main);
+            margin: 0;
         }
 
         .week-tag {
-            font-size: 0.8rem;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 400;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: var(--text-muted);
-            margin-bottom: 30px;
+            color: var(--accent-capy);
+            margin-bottom: 10px;
             display: block;
         }
 
         .question-box {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             line-height: 1.6;
-            margin: 30px 0;
-            padding: 20px;
-            background: var(--bg-color);
-            border-radius: 10px;
-            font-style: italic;
+            margin: 25px 0;
+            padding: 25px;
+            background: var(--accent-green);
+            border-radius: 15px;
+            border-left: 5px solid var(--button-main);
+            position: relative;
         }
 
         input[type="text"] {
             width: 100%;
-            padding: 12px;
-            border: 1px solid var(--accent-soft);
-            border-radius: 8px;
+            padding: 15px;
+            border: 2px solid var(--accent-green);
+            border-radius: 12px;
             margin-bottom: 20px;
             outline: none;
             box-sizing: border-box;
-            transition: border 0.3s;
+            transition: border 0.3s, background 0.3s;
+            font-family: 'Quicksand', sans-serif;
         }
 
-        input:focus { border-color: var(--text-muted); }
+        input:focus { 
+            border-color: var(--accent-capy);
+            background-color: #fafdfb;
+        }
 
         button {
-            background: var(--text-main);
+            background: var(--button-main);
             color: white;
             border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
+            padding: 15px 35px;
+            border-radius: 30px;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 400;
+            font-size: 1rem;
             letter-spacing: 1px;
-            transition: opacity 0.3s;
+            transition: opacity 0.3s, transform 0.2s;
+            box-shadow: 0 4px 10px rgba(115, 158, 128, 0.2);
         }
 
-        button:hover { opacity: 0.8; }
+        button:hover { 
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
 
         #feedback {
-            margin-top: 20px;
-            font-size: 0.9rem;
+            margin-top: 25px;
+            font-size: 1rem;
             min-height: 1.2rem;
+            font-weight: 500;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <span class="week-tag" id="weekDisplay">Challenge of the Week</span>
-    <h1 id="category">Weekly Riddle</h1>
+    <div class="header-section">
+        <div class="capy-icon">🦦🌿</div>
+        <span class="week-tag" id="weekDisplay">CHILL CHALLENGE</span>
+        <h1 id="category">Weekly Riddle</h1>
+    </div>
     
     <div class="question-box" id="question">
-        Loading this week's challenge...
+        Relaxing... Loading this week's question...
     </div>
 
-    <input type="text" id="answerInput" placeholder="Type your answer here...">
+    <input type="text" id="answerInput" placeholder="Type your answer here, friend...">
     <br>
     <button onclick="checkAnswer()">Submit</button>
     
@@ -117,27 +160,26 @@
     // DATA: Add your questions here for each week
     const challenges = [
         { 
-            week: "Week 1", 
+            week: "Week 1 (Relaxing)", 
             category: "Idioms", 
-            question: "What does it mean when someone says 'A piece of cake'?", 
-            answer: "very easy" 
+            question: "To 'Chill Out' means to relax. But what is a 'Couch Potato'?", 
+            answer: "lazy person" 
         },
         { 
-            week: "Week 2", 
+            week: "Week 2 (Focus)", 
             category: "Grammar", 
-            question: "Find the error: 'She don't like apples.'", 
-            answer: "doesn't" 
+            question: "Find the plural: One 'Capybara', many...?", 
+            answer: "capybaras" 
         },
         { 
-            week: "Week 3", 
+            week: "Week 3 (Puzzling)", 
             category: "Riddle", 
-            question: "The more of this there is, the less you see. What is it?", 
-            answer: "darkness" 
+            question: "I have rivers but no water, forests but no trees, and cities but no buildings. What am I?", 
+            answer: "a map" 
         }
     ];
 
-    // Get current week index (0, 1, 2...) based on the date or manual toggle
-    // For now, we'll manually set it to 0. Change this number every week!
+    // Change this index number (0, 1, 2...) every week!
     let currentWeek = 0; 
 
     const challenge = challenges[currentWeek];
@@ -150,11 +192,11 @@
         const feedback = document.getElementById('feedback');
         
         if (userAnswer === challenge.answer.toLowerCase()) {
-            feedback.innerText = "✨ Correct! Well done.";
-            feedback.style.color = "#8da399";
+            feedback.innerText = "✨ Correct! Very chill, indeed.";
+            feedback.style.color = "#739e80"; // Correct green
         } else {
-            feedback.innerText = "Not quite! Try again.";
-            feedback.style.color = "#c9ada7";
+            feedback.innerText = "Not quite! Take a breath and try again.";
+            feedback.style.color = "#c7b299"; // Capy brown
         }
     }
 </script>
