@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Student Challenge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fcfaf8;
+            --card-bg: #ffffff;
+            --accent-soft: #e5e1da;
+            --text-main: #4a4a4a;
+            --text-muted: #8c8c8c;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            text-align: center;
+            border: 1px solid var(--accent-soft);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .week-tag {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            display: block;
+        }
+
+        .question-box {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 30px 0;
+            padding: 20px;
+            background: var(--bg-color);
+            border-radius: 10px;
+            font-style: italic;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--accent-soft);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            outline: none;
+            box-sizing: border-box;
+            transition: border 0.3s;
+        }
+
+        input:focus { border-color: var(--text-muted); }
+
+        button {
+            background: var(--text-main);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: opacity 0.3s;
+        }
+
+        button:hover { opacity: 0.8; }
+
+        #feedback {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            min-height: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <span class="week-tag" id="weekDisplay">Challenge of the Week</span>
+    <h1 id="category">Weekly Riddle</h1>
+    
+    <div class="question-box" id="question">
+        Loading this week's challenge...
+    </div>
+
+    <input type="text" id="answerInput" placeholder="Type your answer here...">
+    <br>
+    <button onclick="checkAnswer()">Submit</button>
+    
+    <p id="feedback"></p>
+</div>
+
+<script>
+    // DATA: Add your questions here for each week
+    const challenges = [
+        { 
+            week: "Week 1", 
+            category: "Idioms", 
+            question: "What does it mean when someone says 'Break a leg'?", 
+            answer: "good luck" 
+        },
+        { 
+            week: "Week 2", 
+            category: "Grammar", 
+            question: "Find the error: 'She don't like apples.'", 
+            answer: "doesn't" 
+        },
+        { 
+            week: "Week 3", 
+            category: "Riddle", 
+            question: "The more of this there is, the less you see. What is it?", 
+            answer: "darkness" 
+        }
+    ];
+
+    // Get current week index (0, 1, 2...) based on the date or manual toggle
+    // For now, we'll manually set it to 0. Change this number every week!
+    let currentWeek = 0; 
+
+    const challenge = challenges[currentWeek];
+    document.getElementById('weekDisplay').innerText = challenge.week;
+    document.getElementById('category').innerText = challenge.category;
+    document.getElementById('question').innerText = challenge.question;
+
+    function checkAnswer() {
+        const userAnswer = document.getElementById('answerInput').value.toLowerCase().trim();
+        const feedback = document.getElementById('feedback');
+        
+        if (userAnswer === challenge.answer.toLowerCase()) {
+            feedback.innerText = "✨ Correct! Well done.";
+            feedback.style.color = "#8da399";
+        } else {
+            feedback.innerText = "Not quite! Try again.";
+            feedback.style.color = "#c9ada7";
+        }
+    }
+</script>
+
+</body>
+</html>
